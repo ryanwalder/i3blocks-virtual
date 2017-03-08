@@ -42,8 +42,8 @@ if is_installed lxc-ls; then
 fi
 
 # Your user needs to be added to the docker group
-if is_installed docker-engine; then
-    docker=$(docker ps | head -n1 | wc -l)
+if is_installed docker; then
+    docker=$(docker ps | sed -n '1!p' | wc -l)
     if [[ $docker != 0 ]]; then
         docker="DKR: $docker"
     else
